@@ -3,7 +3,7 @@ import Topbar from "../../components/topbar/Topbar.js";
 export default function Home () {
     return (
         <div>
-           <Topbar/>
+           shift
         </div>
     )
 }
