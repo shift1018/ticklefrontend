@@ -3,7 +3,7 @@ import "./topbar.css"
 export default function Topbar() {
     return(
         <div>
-            topbar
+            shift2
         </div>
     )
 };
