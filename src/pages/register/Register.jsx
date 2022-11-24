@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+import axios from "../../utils/axios.js";
 import { useNavigate } from "react-router-dom";
 import "./register.css";
 
@@ -17,7 +17,7 @@ export default function Register() {
 
   const onSubmit = (data) => {
     axios
-      .post("http://localhost:8800/api/auth/register", data)
+      .post("api/auth/register", data)
       .then((response) => {
         navigate("/login");
       });

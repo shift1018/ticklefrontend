@@ -23,6 +23,7 @@
     "react-router-dom": "^6.4.3",
     "react-scripts": "^5.0.1",
     "reactstrap": "^9.1.5",
+    "timeago": "^1.6.7",
     "timeago.js": "^4.0.2",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
