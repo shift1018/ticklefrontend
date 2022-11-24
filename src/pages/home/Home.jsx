@@ -7,7 +7,6 @@ import "./home.css"
 
 export default function Home () {
     return (
-        <div>
             <>
                 <Topbar/>
                 <div className="homeContainer">
@@ -16,6 +15,5 @@ export default function Home () {
                     <Rightbar/>
                 </div>
             </>
-        </div>
     );
 }

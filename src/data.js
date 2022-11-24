@@ -1,52 +1,52 @@
 export const Users = [
     {
       id:1,
-      profilePicture: "assets/person/avatar1.jpg",
+      profilePicture: "person/avatar1.jpg",
       username: "Olivia Brown",
     },
     {
       id:2,
-      profilePicture: "assets/person/avatar2.jpg",
+      profilePicture: "person/avatar2.jpg",
       username: "John Smith",
     },
     {
       id:3,
-      profilePicture: "assets/person/avatar3.jpg",
+      profilePicture: "person/avatar3.jpg",
       username: "Phil Thornton",
     },
     {
       id:4,
-      profilePicture: "assets/person/avatar4.jpg",
+      profilePicture: "person/avatar4.jpg",
       username: "Brad MacDonald",
     },
     {
       id:5,
-      profilePicture: "assets/person/avatar5.jpg",
+      profilePicture: "person/avatar5.jpg",
       username: "Zach Walker",
     },
     {
       id:6,
-      profilePicture: "assets/person/avatar6.jpg",
+      profilePicture: "person/avatar6.jpg",
       username: "Sarah Chen",
     },
     {
       id:7,
-      profilePicture: "assets/person/avatar7.jpg",
+      profilePicture: "person/avatar7.jpg",
       username: "Nadine Williams",
     },
     {
       id:8,
-      profilePicture: "assets/person/avatar8.jpg",
+      profilePicture: "person/avatar8.jpg",
       username: "Tristan Russell",
     },
     {
       id:9,
-      profilePicture: "assets/person/avatar9.jpg",
+      profilePicture: "person/avatar9.jpg",
       username: "Daniel Fish",
     },
     {
       id:10,
-      profilePicture: "assets/person/avatar10.jpg",
+      profilePicture: "person/avatar10.jpg",
       username: "Kate Parker",
     },
   ];
@@ -55,7 +55,7 @@ export const Users = [
     {
       id: 1,
       desc: "Love For All, Hatred For None. A slogan taken from Ghandi’s India has never been more true than it is today. With so much hatred being spread around the world, it would make sense for everyone to love one another and live without hatred. Share this post with those close to you and let's spread the message of love together!",
-      photo: "assets/post/1.jpg",
+      photo: "post/1.jpg",
       date: "1 mins ago",
       userId: 1,
       like: 4,
@@ -63,7 +63,7 @@ export const Users = [
     },
     {
       id: 2,
-      photo: "assets/post/2.jpg",
+      photo: "post/2.jpg",
       date: "21mins ago",
       userId: 2,
       like: 2,
@@ -72,7 +72,7 @@ export const Users = [
     {
       id: 3,
       desc: "Sometimes we need to remind ourselves how blessed our lives really are...Every moment is a fresh beginning so let’s take this chance to appreciate what we have today ❤.",
-      photo: "assets/post/3.jpg",
+      photo: "post/3.jpg",
       date: "1 hour ago",
       userId: 3,
       like: 10,
@@ -80,7 +80,7 @@ export const Users = [
     },
     {
       id: 4,
-      photo: "assets/post/4.jpg",
+      photo: "post/4.jpg",
       date: "1 hours ago",
       userId: 4,
       like: 7,
@@ -88,7 +88,7 @@ export const Users = [
     },
     {
       id: 5,
-      photo: "assets/post/5.jpg",
+      photo: "post/5.jpg",
       date: "5 hours ago",
       userId: 5,
       like: 23,
@@ -96,7 +96,7 @@ export const Users = [
     },
     {
       id: 6,
-      photo: "assets/post/6.jpg",
+      photo: "post/6.jpg",
       date: "1 day ago",
       userId: 6,
       like: 44,
@@ -105,7 +105,7 @@ export const Users = [
     {
       id: 7,
       desc: "Keep that smile on your face no matter what life throws at you!We all regret things sometimes, but it's important to make sure those regrets don't stop you from smiling when you're having a great day.",
-      photo: "assets/post/7.jpg",
+      photo: "post/7.jpg",
       date: "2 days ago",
       userId: 7,
       like: 52,
@@ -113,7 +113,7 @@ export const Users = [
     },
     {
       id: 8,
-      photo: "assets/post/8.jpg",
+      photo: "post/8.jpg",
       date: "3 days ago",
       userId: 8,
       like: 15,
@@ -122,7 +122,7 @@ export const Users = [
     {
       id: 9,
       desc: "The best way to change the world is by being yourself ❤",
-      photo: "assets/post/9.jpg",
+      photo: "post/9.jpg",
       date: "5 days ago",
       userId: 9,
       like: 11,
@@ -130,7 +130,7 @@ export const Users = [
     },
     {
       id: 10,
-      photo: "assets/post/10.jpg",
+      photo: "post/10.jpg",
       date: "1 week ago",
       userId: 10,
       like: 104,
