@@ -102,15 +102,16 @@ export default function Post({ post }) {
             />
             <span className="postLikeCounter">{like}</span>
           </div>
-          <div className="postBottomRight">
+          {/* <div className="postBottomRight">
             <span className="postCommentText">{post.comment}comments</span>
-          </div>
-          <Comments
+          </div> */}
+          
+        </div>
+        <Comments
             CommentLists={CommentLists}
             postId={post._id}
             refreshFunction={updateComment}
           />
-        </div>
       </div>
     </div>
   );
