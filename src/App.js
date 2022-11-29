@@ -1,7 +1,7 @@
 import Home from "./pages/home/Home";
 import Feed from "./components/feed/Feed";
 import Profile from "./pages/profile/Profile";
-import Feed from "./components/feed/Feed";
+
 //import { Routes, Route } from "react-router-dom";
 import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
