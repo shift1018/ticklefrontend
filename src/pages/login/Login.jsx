@@ -18,14 +18,15 @@ export default function Login() {
       if (response.data.error) {
         alert(response.data.error);
       } else {
-        console.log(response);
-        localStorage.setItem("accessToken", response.data.token);
+        console.log(response); // ------------------COMMENT OUT-------------------
+        localStorage.setItem("accessToken", response.data.accessToken);
         setAuthState({
-          email: response.data.email,
-          userId: response.data.id,
+          email: response.data.user.email,
+          userId: response.data.user._id,
           status: true,
-          role: response.data.role,
+          role: response.data.user.role,
         });
+
         navigate("/");
       }
     });

@@ -48,6 +48,11 @@
       border: 1px solid gray;
       font-size: 18px;
       padding-left: 20px;
+      margin-bottom: 10px;
+      width: 90%;
+      position: relative;
+      left: 50%;
+      transform: translate(-50%,0);
   }
   
   .loginInput:focus{
@@ -63,6 +68,10 @@
       font-size: 20px;
       font-weight: 500;
       cursor: pointer;
+     
+      position: relative;
+      left: 50%;
+      transform: translate(-50%,0);
   }
   
   .loginForgot{
@@ -81,4 +90,14 @@
       font-size: 20px;
       font-weight: 500;
       cursor: pointer;
+      width: 90%;
+      position: relative;
+      left: 50%;
+      transform: translate(-50%,0);
+      margin-bottom: 10px;
   }
+
+ .RegisterError{
+   color:red;
+   font-size: 10px;
+ }

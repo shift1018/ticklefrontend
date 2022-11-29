@@ -4,6 +4,8 @@ import * as Yup from "yup";
 import axios from "../../utils/axios.js";
 import { useNavigate } from "react-router-dom";
 import "./register.css";
+import {useState, createContext, useContext} from "react";
+import { AuthContext } from "../../utils/AuthContext.js";
 
 export default function Register() {
   const initialValues = {
@@ -12,6 +14,13 @@ export default function Register() {
     password: "",
     confirmpassword: "",
   };
+
+  const { authState } = useContext(AuthContext);
+  
+  //console.log("Register page:", authState);
+  const currentUserId = authState.userId;
+  console.log("THIS USER ID:", currentUserId)
+
 
   const navigate = useNavigate();
 
@@ -51,7 +60,7 @@ export default function Register() {
             >
               <Form>
                 <div>
-                  <ErrorMessage name="username" component="span" />
+                  <ErrorMessage className="RegisterError" name="username" component="span" />
                   <Field
                     className="loginInput"
                     name="username"
@@ -59,7 +68,7 @@ export default function Register() {
                   />
                 </div>
                 <div>
-                  <ErrorMessage name="email" component="span" />
+                  <ErrorMessage className="RegisterError" name="email" component="span" />
                   <Field
                     className="loginInput"
                     name="email"
@@ -67,7 +76,7 @@ export default function Register() {
                   />
                 </div>
                 <div>
-                  <ErrorMessage name="password" component="span" />
+                  <ErrorMessage className="RegisterError" name="password" component="span" />
                   <Field
                     className="loginInput"
                     name="password"
@@ -76,7 +85,7 @@ export default function Register() {
                   />
                 </div>
                 <div>
-                  <ErrorMessage name="confirmpassword" component="span" />
+                  <ErrorMessage className="RegisterError" name="confirmpassword" component="span" />
                   <Field
                     className="loginInput"
                     name="confirmpassword"
@@ -84,8 +93,8 @@ export default function Register() {
                     type="password"
                   />
                 </div>
-                <button type="submit" className="loginButton">Sign Up</button>
-                <button type="submit" className="loginRegiaterButton">
+                <button type="submit"className="loginRegisterButton" >Sign Up</button>
+                <button type="submit" className="loginButton" >
                   Log into Account
                 </button>
               </Form>
@@ -97,25 +106,25 @@ export default function Register() {
   );
 
 
-//   return (
-//     <div className="login">
-//       <div className="loginWrapper">
-//         <div className="loginLeft">
-//             <h3 className="loginLogo">tickle</h3>
-//             <span className="loginDesc">Tickle your friends via the app so you don't have to get off your couch while watching Netflix.</span>
-//         </div>
-//         <div className="loginRight">
-//             <div className="registerBox">
-//                 <input placeholder="User name" className="loginInput"></input>
-//                 <input placeholder="Email" className="loginInput"></input>
-//                 <input placeholder="Password" className="loginInput"></input>
-//                 <input placeholder=" Confirm Password" className="loginInput"></input>
+  // return (
+  //   <div className="login">
+  //     <div className="loginWrapper">
+  //       <div className="loginLeft">
+  //           <h3 className="loginLogo">tickle</h3>
+  //           <span className="loginDesc">Tickle your friends via the app so you don't have to get off your couch while watching Netflix.</span>
+  //       </div>
+  //       <div className="loginRight">
+  //           <div className="registerBox">
+  //               <input placeholder="User name" className="loginInput"></input>
+  //               <input placeholder="Email" className="loginInput"></input>
+  //               <input placeholder="Password" className="loginInput"></input>
+  //               <input placeholder=" Confirm Password" className="loginInput"></input>
 
-//                 <button className="loginButton">Sign Up</button>
-//                 <button className="loginRegiaterButton">Log into Account</button>
-//             </div>
-//         </div>
-//       </div>
-//     </div>
-//   )
+  //               <button className="loginButton">Sign Up</button>
+  //               <button className="loginRegiaterButton">Log into Account</button>
+  //           </div>
+  //       </div>
+  //     </div>
+  //   </div>
+  // )
 }
