@@ -16,7 +16,8 @@ const approveFriend=(id)=>{
   {
     headers: { accessToken: localStorage.getItem("accessToken") },
   }).then(() => {
-    navigate("/");
+    window.location.reload();
+    // navigate("/");
     }
   );
 }
@@ -31,8 +32,8 @@ const deleteFriend=(id)=>{
   //   friend: id,
   // }
   ).then(() => {
-    
-    navigate("/");
+    window.location.reload();
+    // navigate("/");
     });
   }    
  

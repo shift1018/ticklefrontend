@@ -39,8 +39,8 @@ export default function Friends() {
       headers: { accessToken: localStorage.getItem("accessToken") },
     }
     ).then(() => {
-      
-      navigate("/user/myFriends");
+      window.location.reload();
+      // navigate("/user/myFriends");
       });
 
   };
