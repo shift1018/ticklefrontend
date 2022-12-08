@@ -1,0 +1,39 @@
+.sidebarFriend{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.sidebarFriendImg{
+    width: 62px;
+    height: 62px;
+    border-radius:50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.friendRequestsWrapper{
+    margin-top: 20px;
+}
+
+
+
+.friendRequestsWrapperName{
+    margin-bottom: 5px;
+}
+
+.friendRequestsWrapperButtonApprove, .friendRequestsWrapperButtonDecline{
+   margin-right: 20px;
+   padding: 6px;
+
+   border-radius: 5px;
+   width: 70px;
+   border: solid 1px grey;
+   cursor: pointer;
+   
+}
+.friendRequestsWrapperButtonApprove {
+    background-color:#1775ee;
+    color:#fff;
+    border: none;
+}

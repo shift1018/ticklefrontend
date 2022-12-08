@@ -1,0 +1,73 @@
+.myProfileContainer{
+    flex: 9;
+    background-color: #eee;
+    padding-top: 30px;
+   
+}
+
+.profileItems{
+    margin: 10px;
+    align-items:center;
+    flex-wrap: wrap;
+    justify-content: center;
+    display: flex;
+}
+
+.myProfileForm{
+    width: 70%;
+}
+
+.myProfileInput {
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    font-size: 18px;
+    padding-left: 20px;
+    width: 80%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  .myProfileTextarea{
+    height: 100px;
+    width: 80%;
+    border-radius: 10px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+    font-size: 18px;
+    
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-top: 20px;
+
+
+  }
+  .myProfileSpan{
+      font-size: 18px;
+      font-weight: 700;
+      
+  }
+
+  .updateButton, .deleteButton {
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background-color: #42b72a;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 50%;
+    margin: 0 17%;
+  }
+
+  
+  .myprofileLeftButton{
+    border:0;
+    cursor: pointer;
+    margin-top: 40px;
+  }
+
+  .myProfileIcon{
+margin-top: 10px;  }
+
