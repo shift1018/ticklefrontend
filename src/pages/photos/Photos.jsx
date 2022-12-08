@@ -93,8 +93,21 @@ const updatePhotos=()=>{
           <div className="photoRight">
           <h3 className="photoTitle">My Photos</h3>
           </div>
+          <div className="photoInput">
+          {show && <div>
+            <label >Album: </label>
+            <input  type="text" className ="form-control" 
+                                    onChange={(event) => {setAlbum(event.target.value);}
+                                }/>
+              <button className="photoAlbumsBtn" type="submit" onClick={()=>{updatePhotos();navigate(0);} }>submit</button>                   
+        
+                                </div>
+                                
+                                }
+                                </div>
           <div className="photoLeft">
-          <button type="button" className="photoEditButton" onClick={()=>setShow(!show)}>Edit</button>
+          <button type="button" className="photoEditButton" onClick={()=>setShow(!show)}>Create</button>
+
           <button type="button" className="photoEditButton" onClick={()=>setShow(!show)}>Move to</button>
           </div>
         
@@ -137,16 +150,7 @@ const updatePhotos=()=>{
             
 </div>
 <hr className="photoHr"></hr>
-            {show && <div>
-            <label >Move to list:</label>
-            <input  type="text" className ="form-control" 
-                                    onChange={(event) => {setAlbum(event.target.value);}
-                                }/>
-              <button type="submit" onClick={()=>{updatePhotos();navigate(0);} }>submit</button>                   
-                                
-                                </div>
-                                
-                                }
+            
 
  
 <div className="photoGrid">

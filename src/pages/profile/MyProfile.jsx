@@ -131,137 +131,161 @@ export default function MyProfile() {
                         deleteMyAccount(userId);
                       }}><DeleteForeverOutlinedIcon className="myProfileIcon"/>Delete profile </button>
             </div>
-        </div>
-    <hr></hr>
-    <div className="profileItems">
+          </div>
+          <hr></hr>
+          <div className="profileItems">
+            <Formik>
+              <Form className="myProfileForm">
+              <span className="myProfileSpan">Avatar</span>
+                <div>
+                  {/* .....................upload avatar........................ */}
+                  {filePreview!== null ?  
+                  <img
+                    src={filePreview}
+                    // src ="https://tickle.blob.core.windows.net/post/az1.jpg?sv=2021-06-08&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2022-12-23T10:48:40Z&st=2022-11-23T02:48:40Z&spr=https&sig=0n%2Bq%2FYphSP%2BSzLnv8v1VgCJDSHYjuS0X8VsGf8k23eE%3D"
+                    alt=""
+                    className="avatarImg"
+                  />: avatarURL !== null ?
+                  <img
+                  src={avatarURL }
+                  alt=""
+                  className="avatarImg"
+                /> : null }
+                 <input
+                    type="file"
+                    accept="image/jpeg, image/png, image/jpg"
+                    onChange={onFileChange}
+                  />
+ </div>
 
-                <Formik>
-                  <Form className="myProfileForm">
-                      <div>
-                      {filePreview!== null ?  
-                      <img
-                        src={filePreview }
-                        alt=""
-                        className=""
-                      />: avatarURL !== null ? 
-                      <img
-                        src={avatarURL }
-                        alt=""
-                        className=""
-                      /> : null }
-                      
-                      <input type="file"  accept="image/jpeg, image/png, image/jpg"  onChange={onFileChange} />
-       
-                      <Field
-                        className="loginInput"
-                        name="avatarURL"
-                        placeholder="avatarURL"
-                        hidden
-                      />
-                    </div>
-                    <span className="myProfileSpan">User name: </span>
-                    <div>   
-                      <ErrorMessage
-                        className="RegisterError"
-                        name="username"
-                        component="span"
-                      />
-                      <Field
-                        className="myProfileInput"
-                        name="username"
-                        disabled="true"
-                        placeholder="User name"
-                        value={username}
-                        onChange={(event) => {
-                          setUsername(event.target.value);
-                        }}
-                      />
-                    </div>
-                    <span className="myProfileSpan" >City</span>
-                    <div>
-                      <Field
-                        className="myProfileInput"
-                        name="city"
-                        placeholder="City"
-                        value={city}
-                        onChange={(event) => {
-                          setCity(event.target.value);
-                        }}
-                      />
-                    </div>
-                    <span className="myProfileSpan">From</span>
-                    <div>
-                      <ErrorMessage
-                        className="RegisterError"
-                        name="from"
-                        component="span"
-                      />
-                      <Field
-                        className="myProfileInput"
-                        name="from"
-                        placeholder="From"
-                        value={from}
-                        onChange={(event) => {
-                          setFrom(event.target.value);
-                        }}
-                      />
-                    </div>
-<span className="myProfileSpan">Birthday</span>
-                    <div>
-                      <ErrorMessage
-                        className="RegisterError"
-                        name="birthday"
-                        component="span"
-                      />
-                      <Field
-                        className="myProfileInput"
-                        name="birthday"
-                        placeholder="Birthday"
-                        type="date"
-                        value={moment(birthday).utc().format('YYYY-MM-DD')}
-                        onChange={(event) => {
-                          setBirthday(event.target.value);
-                        }}
-                      />
-                    </div>
-                    <span className="myProfileSpan">About myself</span>
-                    <div>
-                      <ErrorMessage
-                        className="RegisterError"
-                        name="desc"
-                        component="span"
-                      />
-                      <TextArea
-                        className="myProfileTextarea"
-                        name="desc"
-                        placeholder="Tell us about yourself..."
-                        value={desc}
-                        onChange={(event) => {
-                          setDesc(event.target.value);
-                        }}
-                      />
-                    </div>
-                    <img
+                 
+                  <span className="myProfileSpan">Background </span>
+<div>
+<img
                         src={backgroundPreview || profileURL|| PF + "person/noBackground.png"}
                         alt=""
-                        className=""
+                        className="avatarImg"
                       /> 
                     <input type="file"  accept="image/jpeg, image/png, image/jpg"  onChange={onbackgroundChange} />
-                    <button className="updateButton"
-                      onClick={() => {
-                        updateMyInfo(userId);
+                  <Field
+                    className="loginInput"
+                    name="avatarURL"
+                    placeholder="avatarURL"
+                    hidden
+                  />
+               </div>
 
-                        
-                      }}
-                    >
-                      Update
-                    </button>
-                  </Form>
-                </Formik>
-              </div>
+                <span className="myProfileSpan">User name </span>
+                <div>
+                  <ErrorMessage
+                    className="RegisterError"
+                    name="username"
+                    component="span"
+                  />
+                  <Field
+                    className="myProfileInput"
+                    name="username"
+                    disabled="true"
+                    placeholder="User name"
+                    value={username}
+                    onChange={(event) => {
+                      setUsername(event.target.value);
+                    }}
+                  />
+                </div>
+                <span className="myProfileSpan">City</span>
+
+                <div>
+                  <Field
+                    className="myProfileInput"
+                    name="city"
+                    placeholder="City"
+                    value={city}
+                    onChange={(event) => {
+                      setCity(event.target.value);
+                    }}
+                  />
+                </div>
+
+                <span className="myProfileSpan">From</span>
+
+                <div>
+                  <ErrorMessage
+                    className="RegisterError"
+                    name="from"
+                    component="span"
+                  />
+                  <Field
+                    className="myProfileInput"
+                    name="from"
+                    placeholder="From"
+                    value={from}
+                    onChange={(event) => {
+                      setFrom(event.target.value);
+                    }}
+                  />
+                </div>
+                <span className="myProfileSpan">Birthday</span>
+                <div>
+                  <ErrorMessage
+                    className="RegisterError"
+                    name="birthday"
+                    component="span"
+                  />
+                  <Field
+                    className="myProfileInput"
+                    name="birthday"
+                    placeholder="Birthday"
+                    value={moment(birthday).utc().format('YYYY-MM-DD')}
+                    onChange={(event) => {
+                      setBirthday(event.target.value);
+                    }}
+                  />
+                </div>
+                <span className="myProfileSpan">About myself</span>
+                <div>
+                  <ErrorMessage
+                    className="RegisterError"
+                    name="desc"
+                    component="span"
+                  />
+                  <TextArea
+                    className="myProfileTextarea"
+                    name="desc"
+                    placeholder="Tell us about yourself..."
+                    value={desc}
+                    onChange={(event) => {
+                      setDesc(event.target.value);
+                    }}
+                  />
+                </div>
+                
+                <button
+                  className="updateButton"
+                  onClick={() => {
+                    updateMyInfo(userId);
+                  }}
+                >
+                  Update
+                </button>
+
+                {/* <button type="submit" className="loginRegisterButton">
+                  Sign Up
+                </button> */}
+                {/* <button type="submit" className="loginButton">
+                      Log into Account
+                    </button> */}
+              </Form>
+            </Formik>
+          </div>
+
+          {/*  */}
+        </div>
+    <hr></hr>
+    
         {/*  */}
       </div>
-      </div>
+      {/* </div> */}
     </>
   );
 }

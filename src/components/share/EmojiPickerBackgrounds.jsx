@@ -33,7 +33,8 @@ export default function EmojiPickerBackgrounds({
           <Picker onEmojiClick={handleEmoji} />
         </div>
       )}
-      <img src="/assets/gift.png" alt="" />
+{/* <div></div> */}
+    {/* <div className="emojiRight"> */}
       <i
         className="emoji_icon_large"
         onClick={(e) => setPicker((prev) => !prev)}
@@ -41,6 +42,9 @@ export default function EmojiPickerBackgrounds({
         <img src="/assets/post/smile.png" alt="" />
         {/* <span>: )</span> */}
       </i>
+      {/* </div> */}
+
+      
     </div>
   );
 }

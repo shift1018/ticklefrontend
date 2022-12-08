@@ -189,6 +189,7 @@ export default function Post({ post }) {
                     Delete post
                   </a>
                   <Link to={`/post/${post._id}`}>Edit post</Link>
+                  {/* <a href="#"> Edit post</a> */}
                 </div>
               </div>
             </div>
@@ -215,31 +216,8 @@ export default function Post({ post }) {
         </div>
 
         <div className="postBottom">
-          <div className="reacts_count">
-            <div className="reacts_count_imgs">
-              {reactions &&
-                reactions
-                  // sort among the reactions by the number of certain reaction
-                  .sort((a, b) => {
-                    return b.count - a.count;
-                  })
-                  .slice(0, 3)
-                  .map(
-                    (reaction, index) =>
-                      reaction.count > 0 && (
-                        <img
-                          src={`${PF1}reactions/${reaction.react}.png`}
-                          alt="emoji"
-                          key={index}
-                        />
-                      )
-                  )}
-            </div>
-            <div className="reacts_count_num">
-              {totalReactions > 0 && totalReactions}
-            </div>
-          </div>
-        </div>
+          
+       
         <div className="post_actions">
           <ReactsPopup
             visible={visible}
@@ -298,7 +276,31 @@ export default function Post({ post }) {
             </span>
           </div>
         </div>
-
+        <div className="reacts_count">
+            <div className="reacts_count_imgs">
+              {reactions &&
+                reactions
+                  // sort among the reactions by the number of certain reaction
+                  .sort((a, b) => {
+                    return b.count - a.count;
+                  })
+                  .slice(0, 3)
+                  .map(
+                    (reaction, index) =>
+                      reaction.count > 0 && (
+                        <img
+                          src={`${PF1}reactions/${reaction.react}.png`}
+                          alt="emoji"
+                          key={index}
+                        />
+                      )
+                  )}
+            </div>
+            <div className="reacts_count_num">
+              {totalReactions > 0 && totalReactions}
+            </div>
+          </div>
+        </div>
         <Comments
           CommentLists={CommentLists}
           postId={post._id}

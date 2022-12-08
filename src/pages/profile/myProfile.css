@@ -71,3 +71,8 @@
   .myProfileIcon{
 margin-top: 10px;  }
 
+.avatarImg{
+  margin: 30px;
+  max-width: 300px;
+  max-height: 300px;
+}

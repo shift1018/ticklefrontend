@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 export default function Share({ setVisible }) {
   const { authState } = useContext(AuthContext);
   //console.log("usershare", authState.userId);
+  const [userObject, setUserObject] = useState("");
 
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
@@ -53,7 +54,15 @@ export default function Share({ setVisible }) {
       window.location.reload();
     } catch (err) {}
   };
-
+  useEffect(() => {
+    axios
+      //.get(`http://localhost:8800/api/auth/user`,
+      .get("api/auth/user", {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      }).then((response) => {
+        setUserObject(response.data.user);
+       // console.log("!!!!!!!!!!", response.data);
+      });}, []);
   return (
     <div className="share">
       <div className="shareWrapper">
@@ -65,7 +74,7 @@ export default function Share({ setVisible }) {
         >
           <Link to={`/profile/${authState.username}`}>
             <img
-              src={authState.avatarURL || PF + "person/avatar1.jpg"}
+              src={userObject.avatarURL || PF + "person/NoAvatar.png"}
               alt=""
               className="shareProfileImage"
             />
@@ -97,13 +106,13 @@ export default function Share({ setVisible }) {
             <label className="shareOption">
               <PermMediaIcon htmlColor="#C12267" className="shareIcon" />
               <span className="shareOptionText"> Photo/Video </span>
-              <input
+              {/* <input
                 style={{ display: "none" }}
                 type="file"
                 id="file"
                 accept=".png,.jpeg,.jpg"
                 onChange={(e) => setFile(e.target.files)}
-              />
+              /> */}
             </label>
             <div className="shareOption">
               <EmojiEmotionsIcon htmlColor="#FDD017" className="shareIcon" />

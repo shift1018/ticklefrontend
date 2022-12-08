@@ -75,3 +75,10 @@
   cursor: pointer;
   color: white;
 }
+.emojiRight{
+  align-content: end;
+}
+
+.postForm{
+  margin-left: 50px;
+}

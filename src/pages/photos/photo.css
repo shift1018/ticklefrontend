@@ -21,6 +21,18 @@
     margin: 40px;
 } */
 
+.photoInput{
+    margin: 30px;
+}
+.photoAlbumsBtn{
+    width: 70px;
+    height: 30px;
+    margin-left: 20px;
+    background-color: #1877f2;
+    color:#fff;
+    border:none;
+    border-radius:5px;
+}
 .photoItems{
     display: flex;
     flex-wrap: wrap;

@@ -9,7 +9,7 @@ import { AuthContext } from "../../utils/AuthContext";
 import axios from "../../utils/axios";
 
 export default function Topbar() {
-
+  const [userObject, setUserObject] = useState("");
   const [username, setUsername] = useState();
 
   const { authState } = useContext(AuthContext);
@@ -18,12 +18,22 @@ const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   const fetchUser = async (username) => {
     const res = await axios.get(`users?username=${username}`);
-    // console.log(res)
+    // console.log(res.data)
     setUser(res.data);
   };
+  useEffect(() => {
+    axios
+      //.get(`http://localhost:8800/api/auth/user`,
+      .get("api/auth/user", {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      }).then((response) => {
+        setUserObject(response.data.user);
+       // console.log("!!!!!!!!!!", response.data);
+      });}, []);
+
   //fetchUser();
 // }, []);
-// console.log("User from search",user);
+// console.log("User from topbar",res.data);
 
   return (
     <div className="topbarContainer">
@@ -52,7 +62,7 @@ const PF = process.env.REACT_APP_PUBLIC_FOLDER;
           </input> 
           <div className="dropdown-content2">
              
-            <span>Recent serches:
+            <span>Result:
             </span>
             <br />
             {user ?(  
@@ -101,7 +111,7 @@ const PF = process.env.REACT_APP_PUBLIC_FOLDER;
           </div>
         </div>
         <Link to={`/profile/${authState.username}`}>
-        <img src="/assets/person/avatar1.jpg" alt="" className="topbarImg" />
+        <img src={userObject.avatarURL || PF + "person/NoAvatar.png"} alt="" className="topbarImg" />
         </Link>
       </div>
     </div>

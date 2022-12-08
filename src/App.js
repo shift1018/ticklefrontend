@@ -68,7 +68,7 @@ function App() {
     <AuthContext.Provider value={{ authState, setAuthState }}>
       {visible && <CreatePostPopup user={user22} setVisible={setVisible} />}
       <Router>
-        <div className="navbar">
+        {/* <div className="navbar">
           <div className="links">
             {!authState.status ? (
               <>
@@ -80,10 +80,10 @@ function App() {
             )}
           </div>
           <div className="loggedInContainer">
-            <h1>{authState.username} </h1>
-            {authState.status && <button onClick={logout}> Logout</button>}
-          </div>
-        </div>
+            {/* <h1>{authState.username} </h1> */}
+            {/* {authState.status && <button onClick={logout}> Logout</button>} */}
+          {/* </div>
+        </div>  */}
 
         <Routes>
           <Route

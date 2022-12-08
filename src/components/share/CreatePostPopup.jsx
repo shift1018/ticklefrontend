@@ -63,7 +63,7 @@ export default function CreatePostPopup({ user, setVisible }) {
           </div>
           <span>Create Post</span>
         </div>
-        <div className="box_profile">
+        {/* <div className="box_profile">
           <img
             src={authState.avatarURL || PF + "person/avatar1.jpg"}
             alt=""
@@ -71,11 +71,11 @@ export default function CreatePostPopup({ user, setVisible }) {
           />
           <div className="box_col">
             <div className="box_profile_name">{authState.username}</div>
-            <div className="box_privacy">
+            {/* <div className="box_privacy">
               <span>Public</span>
-            </div>
-          </div>
-        </div>
+            </div> */}
+          {/* </div>
+        </div>  */}
         <div className="flex_center">
           <textarea
             ref={contentRef}
@@ -92,9 +92,12 @@ export default function CreatePostPopup({ user, setVisible }) {
           setContent={setContent}
         />
         <AddToYourPost />
-        <form onSubmit={submitHandler} >
+        
+        <form onSubmit={submitHandler}  >
+        <div className="postForm">
         <input type="file"  accept="image/jpeg, image/png, image/jpg"  multiple="multiple" onChange={onFileChange} />
-        {/* <div id="display-image"></div> */}      
+        {/* <div id="display-image"></div> */}     
+        </div> 
         <button className="post_submit" type="submit">
             Post
           </button>
