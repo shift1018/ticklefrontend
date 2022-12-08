@@ -95,7 +95,7 @@ export default function CreatePostPopup({ user, setVisible }) {
         
         <form onSubmit={submitHandler}  >
         <div className="postForm">
-        <input type="file"  accept="image/jpeg, image/png, image/jpg"  multiple="multiple" onChange={onFileChange} />
+        <input type="file"  accept="image/jpeg, image/png, image/jpg"  multiple="multiple" onChange={onFileChange}  />
         {/* <div id="display-image"></div> */}     
         </div> 
         <button className="post_submit" type="submit">

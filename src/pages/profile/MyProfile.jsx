@@ -236,6 +236,7 @@ export default function MyProfile() {
                     className="myProfileInput"
                     name="birthday"
                     placeholder="Birthday"
+                    type="date"
                     value={moment(birthday).utc().format('YYYY-MM-DD')}
                     onChange={(event) => {
                       setBirthday(event.target.value);
