@@ -1,0 +1,49 @@
+.friendContainer{
+    flex: 9;
+    background-color: #eee;
+   
+}
+
+.friendTitle{
+    margin: 40px;
+}
+
+.friendItems{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.friendItem{
+    background-color: #fff;
+    margin: 20px;
+    border-radius: 5px;
+}
+li{
+    list-style: none
+}
+
+.friendItemImg{
+    width: 240px;
+    height: 240px;
+    cursor: pointer;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.friendItemTitle{
+    font-size: 18px;
+    margin: 10px 0;
+    padding-left: 8px;
+}
+
+.friendItemButton{
+    margin: 10px auto;
+    height: 30px;
+    width: 80%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    
+}
+

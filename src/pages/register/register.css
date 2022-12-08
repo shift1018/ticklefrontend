@@ -42,6 +42,11 @@
       justify-content: space-between;
   }
   
+.registerBox span{
+  color: red;
+  text-align: center;
+}
+
   .loginInput{
       height: 50px;
       border-radius: 10px;
@@ -99,5 +104,7 @@
 
  .RegisterError{
    color:red;
-   font-size: 10px;
+   font-size: 12px;
+   text-align: center;
+
  }

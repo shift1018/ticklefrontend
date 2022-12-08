@@ -9,27 +9,60 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setAuthState } = useContext(AuthContext);
-
+  const { authState } = useContext(AuthContext);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const login = () => {
     const data = { email: email, password: password };
     axios.post("api/auth/login", data).then((response) => {
-      if (response.data.error) {
-        alert(response.data.error);
-      } else {
-        console.log(response); // ------------------COMMENT OUT-------------------
+      // console.log(response);
+      //  console.log(response.data.message);
+      if (response.data.user) {
+        // console.log("I was here");
         localStorage.setItem("accessToken", response.data.accessToken);
         setAuthState({
           email: response.data.user.email,
           userId: response.data.user._id,
           status: true,
           role: response.data.user.role,
+          friendships: response.data.user.friendships,
+          // username: response.data.username,
         });
-
         navigate("/");
+      } else {
+        // console.log(response.data.message);
+        setError(response.data.message);
       }
     });
+  };
+  //console.log("AuthState after Login and Set AuthStatus:", authState)
+
+  // const login = () => {
+  //   const data = { email: email, password: password };
+  //   axios.post("api/auth/login", data).then((response) => {
+  //     if (response.data.error) {
+  //       alert(response.data.error);
+  //     } else {
+  //       //console.log("Response on login", response); // ------------------COMMENT OUT-------------------
+  //       localStorage.setItem("accessToken", response.data.accessToken);
+  //       setAuthState({
+  //         email: response.data.user.email,
+  //         userId: response.data.user._id,
+  //         status: true,
+  //         role: response.data.user.role,
+  //         friendships: response.data.user.friendships,
+  //         // username: response.data.username,
+  //       });
+
+  //       navigate("/");
+  //     }
+  //   });
+  // };
+  //console.log("AuthState after Login and Set AuthStatus:", authState)
+
+  const createAccount = () => {
+    navigate("/register");
   };
 
   return (
@@ -44,6 +77,10 @@ export default function Login() {
         </div>
         <div className="loginRight">
           <div className="loginBox">
+            {error &&
+              <span>{error}</span>
+            }
+            
             <input
               placeholder="Email"
               className="loginInput"
@@ -62,8 +99,12 @@ export default function Login() {
             <button type="submit" className="loginButton" onClick={login}>
               Log In
             </button>
-            <span className="loginForgot">Forgot Password?</span>
-            <button type="submit" className="loginRegiaterButton">
+            {/* <span className="loginForgot">Forgot Password?</span> */}
+            <button
+              type="submit"
+              className="loginRegiaterButton"
+              onClick={createAccount}
+            >
               Create a New Account
             </button>
           </div>

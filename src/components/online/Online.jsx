@@ -7,8 +7,8 @@ const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     <div>
        <li className="rightbarFriend">
             <div className="rightbarProfileImgContainer">
-                <img src={PF+user.profilePicture} alt="" className="rightbarProfileImg" />
-                <span className="rightbarOnline"></span>
+              <img src={user.avatarURL || PF + "person/NoAvatar.png"} alt="" className="rightbarProfileImg" />
+              {/* <span className="rightbarOnline"></span> */}
             </div>
             <span className="rightbarUsername">{user.username}</span>
         </li>    

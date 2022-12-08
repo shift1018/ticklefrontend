@@ -1,41 +1,20 @@
 import axios from "../../utils/axios.js";
-// //import axios from "axios";
-import {useEffect, useState, useContext} from "react";
-// import {useEffect, useState, useContext} from "react";
-import {AuthContext} from "../../utils/AuthContext";
- import { useNavigate } from 'react-router-dom';
- //import { useParams, useHistory } from 'react-router-dom';
-  
+import {useEffect, useState} from "react";
+//import {AuthContext} from "../../utils/AuthContext";
+import { useNavigate } from 'react-router-dom';  
+import Topbar from "../../components/topbar/Topbar.jsx";
+import Sidebar from "../../components/sidebar/Sidebar.jsx";
+import "./friends.css"
+import {Link} from "react-router-dom"
 
-  export default function Friends() {
-
-//   console.log();
+export default function Friends() {
 
    const [userObject, setUserObject] = useState("");
    const[listOfAppFriends, setListOfAppFriends] = useState([]);
-   const[listOfNotAppFriends, setListOfNotAppFriends] = useState([]);
-  // const { authState } = useContext(AuthContext);
-
-  //   const userId = authState.userId;
-  //   console.log("Usseeeeeeeeeer",userId);
   
  let navigate = useNavigate();
-// let{id} = useParams();
-
-// useEffect(() => {
-//   if (localStorage.getItem("accessToken")) {
-//        axios
-//       .get("api/friends/user/myFriends", {
-//         headers: { accessToken: localStorage.getItem("accessToken") },
-//       })
-//       .then((response) => {
-//         setListOfFriends(response.data.listOfFriends);
-//       });
-//   }
-// }, []);
-
-
-useEffect(() => {
+ const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+ useEffect(() => {
     axios
       //.get(`http://localhost:8800/api/auth/user`,
       .get("api/auth/user", {
@@ -51,36 +30,7 @@ useEffect(() => {
           setListOfAppFriends(response.data);
       });
 
-      axios.get("api/friends/user/notApprFriends",{
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      }).then((response)=>{
-       // console.log("Friendships++++++++++++", response.data);
-          setListOfNotAppFriends(response.data);
-      });
-
   }, []);
-
-  
-// let friendApproved = false;
-// if(userObject.friendships.approvedDate==null){
-//   friendApproved=true;
-// }
-//const today = new Date();
-// console.log(today);
-
-  const approveFriend=(id)=>{
-
-    axios.patch("api/friends/user/approveDate", 
-    {
-      friend: id,
-    },
-    {
-      headers: { accessToken: localStorage.getItem("accessToken") },
-    }).then(() => {
-      navigate("/user/myFriends");
-      }
-    );
-  }
 
   const deleteFriend=(id)=>{
 
@@ -88,170 +38,51 @@ useEffect(() => {
        {
       headers: { accessToken: localStorage.getItem("accessToken") },
     }
-    // {
-    //   friend: id,
-    // }
     ).then(() => {
       
       navigate("/user/myFriends");
       });
 
   };
+return (
+   <>
+    <Topbar/>
+    <div className="homeContainer">
+  
+   <Sidebar/>
+  <div className="friendContainer">
+   <h3 className="friendTitle">My friends</h3>
+   <div className="friendItems">
+   {listOfAppFriends.map((value, key) => { 
+          return (
+            <li>
+              <div className="friendItem">
+              <Link to={'/profile/' + value.username} style={{textDecoration:"none"}}>
+              <img src={value.avatarURL || PF + "person/NoAvatar.png"} alt="" className="friendItemImg"/>
+              </Link>
+              <div className="friendItemTitle">
+              <Link to={'/profile/' + value.username} style={{textDecoration:"none"}}>
+          <span>{ value.username} </span>
+          </Link>
+          </div>
+         <div className="friendItemButtonWrapper"> 
+          <button className="friendItemButton" onClick={() => {
+                      deleteFriend(value._id);
+                    }}>Delete</button>
+                     </div> 
+          </div>
+          </li>
+          );
+          })}
 
-
-  //   .then(response => {
-  //     if (response.data.success) {
-  //         // setting the value of text area input to empty string
-  //        setComment("")
-  //        // update saved data into Parent component Post.jsx using props which we call refreshFunction
-  //        // in the brackets we put the new comment value
-  //        props.refreshFunction(response.data.result)
-  //     } else {
-  //         alert('Failed to save Comment')
-  //     }
-  // })
-
+   </div>
  
 
- return (
-   <>
-   <h2>Username: {userObject.username}</h2>
- <div> 
-
- <table className="table is-striped is-fullwidth">
-    <thead>
-        <tr>
-        <th>Id</th> 
-        <th>User</th> 
-          {/* <th>Friend</th>     */}
-       <th>Approval Date</th>
-        {/*<th>Request Date</th>  */}
-        
-         </tr>
-    </thead>
-    <tbody> 
-         {listOfAppFriends.map((value, key) => { 
-          return ( 
-                 <tr key={key} > 
-                  <td>{ value._id}</td> 
-                 <td>{ value.username}</td> 
-                 {/* <td>{ value.friendships.approvedDate }</td> */}
-                 {/* <td>{ value.friendships } </td>  */}
-                {/* <td>{ value.user}</td> 
-                 <td>{ value.friend }</td> 
-                
-                <td>{ value.requestDate }</td>  */}
-
-{/* <td><button onClick={() => {
-                      approveFriend(value._id);
-                    }}> Approve
-                  </button></td> */}
-                
-                {/* {friendApproved ?(
-                <td><button onClick={() => {
-                      approveFriend(value._id);
-                    }}> Approve
-                  </button></td>): (
-                   <td></td>
-                  )} */}
-                <td><button onClick={() => {
-                      deleteFriend(value._id);
-                    }}>Delete</button></td> 
-
-                {/* <td><button onClick={()=>{navigate(`/auction/${value.id}`);}}> Edit
-                  </button></td>
-                <td>Delete</td>  */}
-                
-                
-             </tr> 
-           ); 
- }) } 
-         
-     </tbody>
-</table>
-
-
-
-<table className="table is-striped is-fullwidth">
-    <thead>
-        <tr>
-        <th>Id</th> 
-        <th>User</th> 
-          {/* <th>Friend</th>     */}
-       <th>Approval Date</th>
-        {/*<th>Request Date</th>  */}
-        
-         </tr>
-    </thead>
-    <tbody> 
-         {listOfNotAppFriends.map((value, key) => { 
-          return ( 
-                 <tr key={key} > 
-                  <td>{ value._id}</td> 
-                 <td>{ value.username}</td> 
-                 {/* <td>{ value.friendships.approvedDate }</td> */}
-                 {/* <td>{ value.friendships } </td>  */}
-                {/* <td>{ value.user}</td> 
-                 <td>{ value.friend }</td> 
-                
-                <td>{ value.requestDate }</td>  */}
-
-<td><button onClick={() => {
-                      approveFriend(value._id);
-                    }}> Approve
-                  </button></td>
-                
-                {/* {friendApproved ?(
-                <td><button onClick={() => {
-                      approveFriend(value._id);
-                    }}> Approve
-                  </button></td>): (
-                   <td></td>
-                  )} */}
-                <td><button onClick={() => {
-                      deleteFriend(value._id);
-                    }}>Delete</button></td> 
-
-                {/* <td><button onClick={()=>{navigate(`/auction/${value.id}`);}}> Edit
-                  </button></td>
-                <td>Delete</td>  */}
-                
-                
-             </tr> 
-           ); 
- }) } 
-         
-     </tbody>
-</table>
-
-
-
 </div> 
+  </div>
 </>
  );
 
 }
 
-//   const friends = [];
-
-// for(let i=0; i<listOfFriends.length; i++){
-//   listOfFriends[i].friendships.forEach(item=>console.log(item));
-//  //friends[i]=listOfFriends[i].friendships;
-// }
-//console.log(friends);
-
-//friends.forEach(item=>console.log(item));
-
-  // console.log("User ", userObject.friendships);
-  // console.log("List ", listOfFriends.friendships);
-
-//console.log("authState userId!!!!!!!!!!!!!!!!!!!!!!", userId);
-
-// useEffect(()=>{
-//     axios.get(`api/friends/myFriends/${userId}`).then((response)=>{
-//       //console.log(response);
-//    console.log("Friendships++++++++++++", response.data);
-//         setListOfFriends(response.data);
-//     });
-// }, []);
 
