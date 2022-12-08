@@ -5,6 +5,7 @@ import axios from "../../utils/axios.js";
 import Friend from "../../components/friends/Friend";
 
 import {useEffect, useState} from "react";
+import moment from "moment";
 
 
 export default function Rightbar({user}) {
@@ -81,7 +82,10 @@ export default function Rightbar({user}) {
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">Birthday:</span>
-            <span className="rightbarInfoValue">{user.birthday}</span>
+            <span className="rightbarInfoValue">
+            {moment(user.birthday).utc().format('YYYY-MM-DD')}
+              
+            </span>
           </div>
           <hr className="sidebarHr"/>
           <h4 className="rightbarTitle">User friends</h4>

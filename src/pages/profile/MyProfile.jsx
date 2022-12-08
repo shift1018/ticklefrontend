@@ -12,11 +12,13 @@ import Sidebar from "../../components/sidebar/Sidebar.jsx";
 import "./myProfile.css"
 import TextArea from "rc-textarea";
 import { BlobServiceClient } from "@azure/storage-blob";
+import moment from "moment";
 
 
 
 
 export default function MyProfile() {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   let navigate = useNavigate();
   const [user, setUser] = useState({});
 
@@ -34,6 +36,9 @@ export default function MyProfile() {
   const [from, setFrom] = useState();
   const [birthday, setBirthday] = useState();
   const [desc, setDesc] = useState();
+  const [profileURL, setProfileURL] = useState();
+
+
 
 
 
@@ -48,82 +53,47 @@ export default function MyProfile() {
       setDesc(res.data.desc);
       setPassword(res.data.password);
       setAvatarURL(res.data.avatarURL);
+      setProfileURL(res.data.profileURL);
       //console.log(res)
       setUser(res.data);
     };
     //console.log("User in useEffect :", user);
     //window.location.reload();
+
     fetchUser();
+    
   }, [userId]);
 
-
-
-
-    // all blobs in container
-    const [blobList, setBlobList] = useState([]);
-
-    // current file to upload into container
     const [fileSelected, setFileSelected] = useState([]);
     const [filePreview, setFilePreview] = useState(null);
     const onFileChange = (event) => {
-      // capture file into state
       setFileSelected(event.target.files);
       setFilePreview(URL.createObjectURL(event.target.files[0]));
     };
+
+    const [background, setBackground] = useState([]);
+    const [backgroundPreview, setBackgroundPreview] = useState(null);
+    const onbackgroundChange = (event) => {
+      setBackground(event.target.files);
+      setBackgroundPreview(URL.createObjectURL(event.target.files[0]));
+    };
   
     const formData = new FormData()
-    
-    
+        
     formData.append("fileName", fileSelected[0])
-
+    formData.append("fileNameb", background[0])
     formData.append('username', username);
     formData.append('city', city);
     formData.append('from', from);
     formData.append('birthday', birthday);
     formData.append('desc', desc);
     formData.append('avatarURL', avatarURL);
-
-// const getavatarurl =(data)  => {
-    
-//   //set azure environment : ConnectionString and ContainerName
-//   const blobServiceClient = BlobServiceClient.fromConnectionString(
-//     "BlobEndpoint=https://tickle.blob.core.windows.net/;QueueEndpoint=https://tickle.queue.core.windows.net/;FileEndpoint=https://tickle.file.core.windows.net/;TableEndpoint=https://tickle.table.core.windows.net/;SharedAccessSignature=sv=2021-06-08&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2022-12-23T10:48:40Z&st=2022-11-23T02:48:40Z&spr=https&sig=0n%2Bq%2FYphSP%2BSzLnv8v1VgCJDSHYjuS0X8VsGf8k23eE%3D"
-//   );
-//   const containerClient = blobServiceClient.getContainerClient("post");
-
-//   const fileName = data.fileName;
-//   const blockBlobClient = containerClient.getBlockBlobClient(fileName);
-//   const options = { blobHTTPHeaders: { blobContentType: data.fileName.type } };
-//   blockBlobClient.uploadData(data.fileName.data, options);
-
-//   const avatarURL = containerClient.getBlockBlobClient(fileName).url;
-
-//   return avatarURL;
-// }
-
-
-   
-
-    // formData.append('avatarURL', "");
-
+    formData.append('profileURL', profileURL);
   const updateMyInfo = (userId) => {
-
-    // avatarURL= getavatarurl(formData);
     axios
       .patch(
         `users/update/${userId}`,
         formData,
-        // {
-        //   // role: role.current,
-        //   // avatarURL: avatarURL,
-        //   username: username,
-        //   //email: email,
-        //   //  password: password.current,
-        //   city: city,
-        //   from: from,
-        //   birthday: birthday,
-        //   desc: desc,
-        // },
         {
           headers: { accessToken: localStorage.getItem("accessToken") },
         }
@@ -144,6 +114,7 @@ export default function MyProfile() {
         navigate("/");
       });
   };
+
   return (
     <>
     <Topbar/>
@@ -151,6 +122,7 @@ export default function MyProfile() {
     <Sidebar/>
     <div className="myProfileContainer">
     <div className="photoTop">
+                    
           <div className="photoRight">
             <h3 className="friendTitle">Edit profile</h3>
           </div>
@@ -166,7 +138,6 @@ export default function MyProfile() {
                 <Formik>
                   <Form className="myProfileForm">
                       <div>
-                      {/* .....................upload avatar........................ */}
                       {filePreview!== null ?  
                       <img
                         src={filePreview }
@@ -188,11 +159,8 @@ export default function MyProfile() {
                         hidden
                       />
                     </div>
-
-
                     <span className="myProfileSpan">User name: </span>
-                    <div>
-                        
+                    <div>   
                       <ErrorMessage
                         className="RegisterError"
                         name="username"
@@ -201,6 +169,7 @@ export default function MyProfile() {
                       <Field
                         className="myProfileInput"
                         name="username"
+                        disabled="true"
                         placeholder="User name"
                         value={username}
                         onChange={(event) => {
@@ -208,11 +177,8 @@ export default function MyProfile() {
                         }}
                       />
                     </div>
-<span className="myProfileSpan" >City</span>
-                    
+                    <span className="myProfileSpan" >City</span>
                     <div>
-                 
-
                       <Field
                         className="myProfileInput"
                         name="city"
@@ -223,10 +189,7 @@ export default function MyProfile() {
                         }}
                       />
                     </div>
-                    
-                    
-<span className="myProfileSpan">From</span>
-
+                    <span className="myProfileSpan">From</span>
                     <div>
                       <ErrorMessage
                         className="RegisterError"
@@ -254,7 +217,8 @@ export default function MyProfile() {
                         className="myProfileInput"
                         name="birthday"
                         placeholder="Birthday"
-                        value={birthday}
+                        type="date"
+                        value={moment(birthday).utc().format('YYYY-MM-DD')}
                         onChange={(event) => {
                           setBirthday(event.target.value);
                         }}
@@ -277,7 +241,12 @@ export default function MyProfile() {
                         }}
                       />
                     </div>
-                    
+                    <img
+                        src={backgroundPreview || profileURL|| PF + "person/noBackground.png"}
+                        alt=""
+                        className=""
+                      /> 
+                    <input type="file"  accept="image/jpeg, image/png, image/jpg"  onChange={onbackgroundChange} />
                     <button className="updateButton"
                       onClick={() => {
                         updateMyInfo(userId);
@@ -285,18 +254,9 @@ export default function MyProfile() {
                     >
                       Update
                     </button>
-                  
-                    {/* <button type="submit" className="loginRegisterButton">
-                  Sign Up
-                </button> */}
-                    {/* <button type="submit" className="loginButton">
-                      Log into Account
-                    </button> */}
                   </Form>
                 </Formik>
               </div>
-      
-
         {/*  */}
       </div>
       </div>

@@ -9,6 +9,8 @@ export default function EditPost() {
   const { postId } = useParams();
   const [error, setError] = useState("");
 
+
+
   useEffect(() => {
     const fetchPost = async () => {
       console.log("Update postId", postId);
@@ -43,6 +45,19 @@ export default function EditPost() {
       });
   };
 
+
+  const urlList = post.imageURL;
+  if (urlList.length > 0 && urlList[0] != "") {
+    // divBool=true;
+    var items =  urlList.map((value, key) => {
+      return <div className="postPhotoGridItem"><img className="photoImg" src={value} alt="" /></div>
+      {/* // return </div> */}
+    }
+    );
+  } else {
+    var items = <br></br>;
+  }
+
   return (
     <div>
       <table className="">
@@ -57,7 +72,7 @@ export default function EditPost() {
               {post.content}
               <br></br>
               {error && <span>{error}</span>}
-
+              
               <input
                 value={content}
                 type="text"
@@ -68,9 +83,10 @@ export default function EditPost() {
               />
             </td>
             <td>
-            <input type="file"  accept="image/jpeg, image/png, image/jpg" 
-            //  onChange={onFileChange} 
-             />
+            <div className="postPhotoGrid">{items} <br /></div>
+            <input type="file"  accept="image/jpeg, image/png, image/jpg"  multiple="multiple" 
+            // onChange={onFileChange} 
+            />
               <button
                 onClick={() => {
                   updatePost(postId);
