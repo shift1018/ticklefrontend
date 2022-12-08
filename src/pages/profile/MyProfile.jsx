@@ -250,6 +250,8 @@ export default function MyProfile() {
                     <button className="updateButton"
                       onClick={() => {
                         updateMyInfo(userId);
+
+                        
                       }}
                     >
                       Update
