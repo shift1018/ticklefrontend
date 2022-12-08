@@ -1,0 +1,151 @@
+.topbarContainer{
+    height: 50px;
+    width: 100%;
+    background-color: #1877f2;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+.topbarLeft{
+    flex: 3;
+}
+.logo{
+    font-size: 24px;
+    margin-left: 20px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+.topbarCenter{
+    flex: 8;
+}
+.searchbar{
+    width: 80%;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-content2 {
+    display: none;
+    padding: 7px;
+    position: absolute;
+    background-color: #fff;
+    width: 350px;
+    border-radius:5px;
+    top:45px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+.searchInput:focus-within + .dropdown-content2, .dropdown-content2:hover {display: block;}
+
+.searchIcon{
+    font-style: 20px !important;
+    margin-left: 10px;
+}
+.searchInput{
+    border:none;
+    width: 70%;
+}
+.searchInput:focus{
+    outline: none;
+}
+
+/* .searchIn:hover .searchbar.dropdown-content {display: block;} */
+.topbarRight{
+    flex: 1;
+    display: flex;
+    margin-right: 20px;
+    align-items: center;
+    justify-content: space-around;
+    color: #fff;
+}
+
+.topbarLink{
+    margin-right: 10px;
+    font-style: 14px;
+    cursor:pointer;
+}
+
+.topbarIcons{
+    display: flex;
+}
+
+.topbarIconItem{
+    margin-right: 15px;
+    cursor: pointer;
+    position: relative;
+}
+.topbarIconBadge{
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 50%;
+    color: #fff;
+    position: absolute;
+    top:-5px;
+    right: -5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: 12px;
+}
+
+
+.topbarImg{
+    width: 32px;
+    height: 32px;
+    border-radius:50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+
+/* For search result MYRZAGUL */
+/* .search_area{
+    position: relative;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+    background: var(--bg-primary);
+    box-shadow: 0 12px 12px var(--shadow-1), inset 0 0 0 0 var(--shadow-1);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    transition: all 0.2s;
+    z-index: i;
+    min-height: 400px;
+    max-height: 70vh;
+    padding: 8px 16px 10px 6px;
+} */
+
+.search_wrap{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.search_user_item{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.search_user_item_img{
+    margin-top: 20px;
+   width: 20px;
+   height: 20px;
+   border-radius: 50%;
+   object-fit: cover; 
+   margin-right: 10px;
+}
+
+.search_results{
+    display: flex;
+
+}

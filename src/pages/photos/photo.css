@@ -1,0 +1,99 @@
+.photoContainer{
+    flex: 9;
+    background-color: #eee;
+    padding-top: 30px;
+   
+}
+.photoTop {
+    display: flex;
+}
+.photoRight{
+    flex:10;
+    /* margin: 40px; */
+    justify-content: end;
+}
+
+.photoLeft{
+    flex:2;
+    /* margin: 40px; */
+}
+/* .photoTitle{
+    margin: 40px;
+} */
+
+.photoItems{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.photoItem{
+    background-color: #fff;
+    margin: 20px;
+    border-radius: 5px;
+}
+
+.photoEditButton{
+    border:0;
+    color:#1877f2;
+    width: 100px;
+    height: 40px;
+    font-size:20px;
+    font-weight: 500;
+    border-radius:5px;
+    cursor: pointer;
+    /* text-decoration: underline; */
+}
+.photoEditButton:hover{
+    background-color:#e7e7e7;
+}
+
+.photoButton{
+    color: rgb(61, 61, 61);
+    font-size: 16px;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    border:0;
+    border-radius:5px;
+
+    /* border-color: #eee; */
+    /* border-style: hidden; */
+    /* border-color: #e7e7e7; */
+    /* /* border-right-style: solid; */
+    
+
+}
+
+.photoButton:hover{
+    background: #e7e7e7;
+}
+
+.photoButton:focus{
+    color:#1877f2;
+    border-bottom: solid 3px #1877f2;
+    border-radius:0;
+}
+
+.photoHr{
+    margin-bottom: 10px;
+}
+
+.photoGrid{
+    display: grid;
+    padding: 3px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 20vw);
+    gap: 15px;
+    /* grid-gab:15; */
+}
+
+.photoGridItem{
+    justify-content:space-around;
+}
+
+.photoImg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
